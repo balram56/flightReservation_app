@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation details</title>
+</head>
+<body>
+<h2>Flight Details</h2>
+
+Flight Number: <span th:text="${flight.flightNumber}"></span><br/>
+Operating Airlines: <span th:text="${flight.operatingAirlines}"></span><br/>
+Departure City: <span th:text="${flight.departureCity}"></span><br/>
+Arrival City: <span th:text="${flight.arrivalCity}"></span><br/>
+Departure Date: <span th:text="${flight.dateOfDeparture}"></span><br/>
+
+<h2>Enter Passenger Details</h2>
+<form th:action="@{/confirmReservation}" method="post">
+    <pre>
+    first name<input type="text" name="firstName" required/>
+    last name<input type="text" name="lastName" required/>
+    middle name<input type="text" name="middleName"/>
+    email<input type="email" name="email" required/>
+    phone<input type="text" name="phone" required/>
+    <input type="hidden" name="flightId" th:value="${flight.id}"/>
+
+    <h2>Enter Your Payment details</h2>
+    Name of the Card<input type="text" name="nameOfTheCard" required/>
+    Card Number<input type="text" name="cardNumber" required/>
+    Cvv<input type="text" name="cvv" required/>
+    Expiry Date<input type="text" name="expiryDate" placeholder="MM/YY" required>
+    <input type="submit" value="completeReservation"/>
+    </pre>
+
+</form>
+</body>
+</html>
